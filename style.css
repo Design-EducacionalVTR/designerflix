@@ -1,0 +1,182 @@
+/* Estilos Gerais */
+body {
+    background-color: #141414; /* Cor de fundo escura da Netflix */
+    color: #E50914; /* Cor do texto branca */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho e Títulos */
+header {
+    padding: 20px 50px;
+}
+
+h1 {
+    font-size: 2.5rem; /* rem é uma unidade de medida flexível */
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-left: 50px;
+}
+
+/* A Fileira de Conteúdo */
+.row {
+    margin-bottom: 20px;
+}
+
+/* O Container dos Pôsteres (A parte mais importante!) */
+.posters-container {
+    display: flex; /* Alinha os itens um ao lado do outro */
+    overflow-y: hidden; /* Esconde a rolagem vertical */
+    overflow-x: auto;   /* Adiciona a rolagem horizontal quando necessário */
+    padding: 20px 50px;
+    gap: 15px; /* Espaço entre os pôsteres */
+}
+
+/* Estilizando a barra de rolagem (opcional, mas deixa mais bonito) */
+.posters-container::-webkit-scrollbar {
+    height: 8px;
+}
+.posters-container::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+}
+
+
+/* O Pôster Individual */
+.poster {
+    display: flex; /* Alterado */
+    flex-direction: column; /* Adicionado */
+    text-decoration: none; /* Adicionado */
+    min-width: 180px;
+    width: 180px;
+    /* height não é mais necessário aqui, o conteúdo define a altura */
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #222;
+}
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir todo o espaço sem distorcer */
+}
+
+/* O Efeito de Zoom ao passar o mouse */
+.poster:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do pôster em 10% */
+    z-index: 10; /* Garante que o pôster aumentado fique na frente dos outros */
+}
+/* Estilo da Logo no Cabeçalho */
+.logo {
+    width: 220px; /* Você pode ajustar este valor para maior ou menor */
+    height: auto; /* Mantém a proporção correta da imagem */
+}
+/* Estilo do Título Abaixo do Pôster */
+.poster-title {
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #e5e5e5; /* Um cinza claro, para bom contraste */
+    margin-top: 8px; /* Espaço entre a imagem e o texto */
+    text-align: center; /* Centraliza o texto */
+    text-decoration: none; /* Remove qualquer sublinhado do link */
+}
+
+/* --- Barra de Notícias Rolável --- */
+
+/* O container fixo na parte inferior */
+.news-ticker-container {
+    background-color: #000000; /* Fundo preto */
+    color: #ffffff; /* Texto branco */
+    position: fixed; /* Fixa na tela */
+    bottom: 0; /* Alinha na parte de baixo */
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    overflow: hidden; /* Esconde o texto que está fora da barra */
+    border-top: 2px solid #E50914; /* Adiciona uma linha vermelha no topo */
+    z-index: 100; /* Garante que fique acima de outros elementos */
+}
+
+/* O texto que vai rolar */
+.news-ticker p {
+    margin: 0;
+    white-space: nowrap; /* Impede que o texto quebre a linha */
+    /* Aplica a animação */
+    animation: ticker-scroll 40s linear infinite;
+}
+
+/* A animação de rolagem (Keyframes) */
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(100%); /* Começa fora da tela, à direita */
+    }
+    100% {
+        transform: translateX(-100%); /* Termina fora da tela, à esquerda */
+    }
+}
+
+/* Pausa a animação quando o mouse está sobre a barra */
+.news-ticker-container:hover .news-ticker p {
+    animation-play-state: paused;
+}
+
+/* --- Estilos das Setas de Navegação --- */
+
+/* Oculta a barra de rolagem padrão */
+.posters-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+}
+.posters-container {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Container que agrupa setas e pôsteres */
+.row-content {
+    position: relative; /* Base para o posicionamento absoluto das setas */
+}
+
+/* Estilo geral das setas */
+.arrow {
+    position: absolute; /* Posicionamento sobre os pôsteres */
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%; /* Ocupa a altura toda da fileira */
+    width: 50px; /* Largura da seta */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
+    border: none;
+    color: white;
+    font-size: 3rem;
+    font-weight: 100;
+    cursor: pointer;
+    z-index: 20; /* Garante que a seta fique na frente dos pôsteres */
+    transition: background-color 0.2s;
+    
+    /* Esconde as setas por padrão */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Mostra as setas quando o mouse passa sobre a fileira */
+.row:hover .arrow {
+    opacity: 1;
+    visibility: visible;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Fica mais escuro ao passar o mouse */
+}
+
+/* Posiciona cada seta em seu lado */
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
