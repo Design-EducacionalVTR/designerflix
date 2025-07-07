@@ -180,3 +180,35 @@ h2 {
 .right-arrow {
     right: 0;
 }
+/* --- Ajuste para Posição das Setas do Carrossel --- */
+
+/* Estilo que se aplica a AMBAS as setas (esquerda e direita) */
+.carousel-control-prev,
+.carousel-control-next {
+    /* Redefine o tamanho para um círculo menor e mais definido */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Deixa a seta redonda */
+    top: 50%; /* Alinha verticalmente ao centro do carrossel */
+    transform: translateY(-50%); /* Ajuste fino para uma centralização perfeita */
+    background-color: rgba(20, 20, 20, 0.8); /* Fundo um pouco mais sólido */
+    transition: all 0.2s ease; /* Transição suave para o hover */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 1); /* Fica totalmente preto no hover */
+}
+
+
+/* Move a seta esquerda para FORA da área de conteúdo */
+.carousel-control-prev {
+    /* Usamos um valor negativo para empurrá-la para a esquerda */
+    left: -55px; /* Ajuste este valor para mais ou menos espaço */
+}
+
+/* Move a seta direita para FORA da área de conteúdo */
+.carousel-control-next {
+    /* Usamos um valor negativo para empurrá-la para a direita */
+    right: -55px; /* Ajuste este valor para mais ou menos espaço */
+}
