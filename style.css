@@ -1,188 +1,135 @@
 /* Estilos Gerais */
 body {
-    background-color: #4A148C; /* Alterado para o seu tom de roxo */
-    color: #FFFF00;           /* Alterado para o seu tom de amarelo */
+    background-color: #4A148C; 
+    color: #FFFF00;           
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Previne scroll horizontal na página inteira */
 }
 
 /* Cabeçalho e Títulos */
 header {
-    padding: 20px 50px;
+    padding: 20px 60px; /* Aumentamos o padding para alinhar com as seções */
 }
-
 h1 {
-    font-size: 2.5rem; /* rem é uma unidade de medida flexível */
+    font-size: 2.5rem;
 }
-
 h2 {
     font-size: 1.5rem;
-    margin-left: 50px;
+    margin-left: 0; /* Removemos a margem antiga */
+    margin-bottom: 10px;
 }
 
-/* A Fileira de Conteúdo */
-.row {
+/* --- A SOLUÇÃO DEFINITIVA --- */
+
+/* 1. A Fileira de Conteúdo agora tem o padding e é a referência */
+section.row {
+    position: relative; /* Essencial para posicionar as setas */
+    padding: 0 60px;  /* CRIAMOS 60px DE ESPAÇO VAZIO EM CADA LADO */
     margin-bottom: 20px;
 }
 
-/* O Container dos Pôsteres (A parte mais importante!) */
+/* 2. O Container dos Pôsteres não precisa mais de padding lateral */
 .posters-container {
-    display: flex; /* Alinha os itens um ao lado do outro */
-    /* DEVOLVEMOS O PADDING LATERAL DE 50PX */
-    padding: 20px 50px; 
-    gap: 15px; /* Espaço entre os pôsteres */
-    overflow-x: auto;   
-    overflow-y: hidden; 
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge */
 }
-
-/* Estilizando a barra de rolagem (opcional, mas deixa mais bonito) */
 .posters-container::-webkit-scrollbar {
-    height: 8px;
-}
-.posters-container::-webkit-scrollbar-thumb {
-    background-color: #333;
-    border-radius: 10px;
+    display: none; /* Chrome, Safari */
 }
 
-
-/* O Pôster Individual */
+/* 3. Estilo do Pôster Individual (sem alterações) */
 .poster {
-    display: flex; /* Alterado */
-    flex-direction: column; /* Adicionado */
-    text-decoration: none; /* Adicionado */
+    display: flex; 
+    flex-direction: column;
+    text-decoration: none;
     min-width: 180px;
     width: 180px;
-    /* height não é mais necessário aqui, o conteúdo define a altura */
     border-radius: 5px;
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
     background-color: #222;
 }
+.poster:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
 .poster img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz a imagem cobrir todo o espaço sem distorcer */
+    object-fit: cover;
 }
-
-/* O Efeito de Zoom ao passar o mouse */
-.poster:hover {
-    transform: scale(1.1); /* Aumenta o tamanho do pôster em 10% */
-    z-index: 10; /* Garante que o pôster aumentado fique na frente dos outros */
-}
-/* Estilo da Logo no Cabeçalho */
-.logo {
-    width: 220px; /* Você pode ajustar este valor para maior ou menor */
-    height: auto; /* Mantém a proporção correta da imagem */
-}
-/* Estilo do Título Abaixo do Pôster */
 .poster-title {
-    font-size: 1rem; /* Tamanho da fonte */
-    font-weight: bold; /* Deixa o texto em negrito */
-    color: #e5e5e5; /* Um cinza claro, para bom contraste */
-    margin-top: 8px; /* Espaço entre a imagem e o texto */
-    text-align: center; /* Centraliza o texto */
-    text-decoration: none; /* Remove qualquer sublinhado do link */
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e5e5e5;
+    margin-top: 8px;
+    text-align: center;
+    text-decoration: none;
 }
 
-/* --- Barra de Notícias Rolável --- */
-
-/* O container fixo na parte inferior */
-.news-ticker-container {
-    background-color: #000000; /* Fundo preto */
-    color: #ffffff; /* Texto branco */
-    position: fixed; /* Fixa na tela */
-    bottom: 0; /* Alinha na parte de baixo */
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    overflow: hidden; /* Esconde o texto que está fora da barra */
-    border-top: 2px solid #E50914; /* Adiciona uma linha vermelha no topo */
-    z-index: 100; /* Garante que fique acima de outros elementos */
-}
-
-/* O texto que vai rolar */
-.news-ticker p {
-    margin: 0;
-    white-space: nowrap; /* Impede que o texto quebre a linha */
-    /* Aplica a animação */
-    animation: ticker-scroll 40s linear infinite;
-}
-
-/* A animação de rolagem (Keyframes) */
-@keyframes ticker-scroll {
-    0% {
-        transform: translateX(100%); /* Começa fora da tela, à direita */
-    }
-    100% {
-        transform: translateX(-100%); /* Termina fora da tela, à esquerda */
-    }
-}
-
-/* Pausa a animação quando o mouse está sobre a barra */
-.news-ticker-container:hover .news-ticker p {
-    animation-play-state: paused;
-}
-
-/* --- Estilos das Setas de Navegação --- */
-
-/* Oculta a barra de rolagem padrão */
-.posters-container::-webkit-scrollbar {
-    display: none;
-}
-.posters-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Container que agrupa setas e pôsteres */
-.row-content {
-    position: relative; 
-}
-
-/* Estilo geral das setas (TOTALMENTE REFEITO) */
+/* 4. Estilo das Setas (posicionadas na área do padding da section.row) */
 .arrow {
     position: absolute;
     top: 0;
     bottom: 0;
-    height: 100%;
-    width: 50px; /* A LARGURA DA SETA É A MESMA DO PADDING */
+    width: 60px; /* A largura da seta é a mesma do padding da seção */
+    background: transparent;
     border: none;
     color: white;
     font-size: 3rem;
-    font-weight: 100;
-    cursor: pointer;
     z-index: 20;
-    transition: background-color 0.2s;
-
-    /* Centraliza o ícone da seta dentro do botão */
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Esconde as setas por padrão */
-    opacity: 0;
-    visibility: hidden;
 }
-
-/* Mostra as setas quando o mouse passa sobre a fileira */
-.row:hover .arrow {
+section.row:hover .arrow {
     opacity: 1;
     visibility: visible;
 }
-
-/* Posiciona cada seta em seu lado, OCUPANDO O PADDING */
-.left-arrow {
-    left: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-}
-
-.right-arrow {
-    right: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-}
-
 .arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.left-arrow {
+    left: 0; /* Alinhada no canto esquerdo da seção */
+}
+.right-arrow {
+    right: 0; /* Alinhada no canto direito da seção */
+}
+
+/* Estilos da Barra de Notícias (sem alterações) */
+.news-ticker-container {
+    background-color: #000000;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    overflow: hidden;
+    border-top: 2px solid #E50914;
+    z-index: 100;
+}
+.news-ticker p {
+    margin: 0;
+    white-space: nowrap;
+    animation: ticker-scroll 40s linear infinite;
+}
+@keyframes ticker-scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.news-ticker-container:hover .news-ticker p {
+    animation-play-state: paused;
 }
