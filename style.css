@@ -1,7 +1,7 @@
 /* Estilos Gerais */
 body {
     background-color: #4A148C; /* Alterado para o seu tom de roxo */
-    color: #FFFF00;            /* Alterado para o seu tom de amarelo */
+    color: #FFFF00;           /* Alterado para o seu tom de amarelo */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -140,23 +140,25 @@ h2 {
     position: relative; /* Base para o posicionamento absoluto das setas */
 }
 
-/* Estilo geral das setas */
+/* Estilo geral das setas (MODIFICADO) */
 .arrow {
-    position: absolute; /* Posicionamento sobre os pôsteres */
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 100%; /* Ocupa a altura toda da fileira */
-    width: 50px; /* Largura da seta */
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
+    position: absolute;
+    width: 45px; /* Tamanho da seta */
+    height: 45px; /* Tamanho da seta */
+    background-color: rgba(20, 20, 20, 0.7); /* Fundo um pouco mais sólido */
     border: none;
+    border-radius: 50%; /* Deixa a seta redonda */
     color: white;
-    font-size: 3rem;
-    font-weight: 100;
+    font-size: 2rem; /* Tamanho do ícone da seta */
+    font-weight: bold;
     cursor: pointer;
-    z-index: 20; /* Garante que a seta fique na frente dos pôsteres */
-    transition: background-color 0.2s;
+    z-index: 20;
+    transition: all 0.2s ease;
     
+    /* Centraliza a seta verticalmente */
+    top: 50%;
+    transform: translateY(-50%);
+
     /* Esconde as setas por padrão */
     opacity: 0;
     visibility: hidden;
@@ -169,46 +171,14 @@ h2 {
 }
 
 .arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Fica mais escuro ao passar o mouse */
+    background-color: rgba(0, 0, 0, 1);
 }
 
-/* Posiciona cada seta em seu lado */
+/* Posiciona cada seta em seu lado (MODIFICADO) */
 .left-arrow {
-    left: 0;
+    left: -25px; /* Empurra a seta para FORA, à esquerda */
 }
 
 .right-arrow {
-    right: 0;
-}
-/* --- Ajuste para Posição das Setas do Carrossel --- */
-
-/* Estilo que se aplica a AMBAS as setas (esquerda e direita) */
-.carousel-control-prev,
-.carousel-control-next {
-    /* Redefine o tamanho para um círculo menor e mais definido */
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Deixa a seta redonda */
-    top: 50%; /* Alinha verticalmente ao centro do carrossel */
-    transform: translateY(-50%); /* Ajuste fino para uma centralização perfeita */
-    background-color: rgba(20, 20, 20, 0.8); /* Fundo um pouco mais sólido */
-    transition: all 0.2s ease; /* Transição suave para o hover */
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-    background-color: rgba(0, 0, 0, 1); /* Fica totalmente preto no hover */
-}
-
-
-/* Move a seta esquerda para FORA da área de conteúdo */
-.carousel-control-prev {
-    /* Usamos um valor negativo para empurrá-la para a esquerda */
-    left: -55px; /* Ajuste este valor para mais ou menos espaço */
-}
-
-/* Move a seta direita para FORA da área de conteúdo */
-.carousel-control-next {
-    /* Usamos um valor negativo para empurrá-la para a direita */
-    right: -55px; /* Ajuste este valor para mais ou menos espaço */
+    right: -25px; /* Empurra a seta para FORA, à direita */
 }
