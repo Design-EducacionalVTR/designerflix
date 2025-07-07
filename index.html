@@ -9,30 +9,34 @@
     <link rel="icon" type="image/png" href="favicon.ico">
 
     <style>
-        body {
-            background-color: #212529;
+        body.bg-dark {
+            background-color: #4A148C !important; 
         }
         .main-logo-text {
-            color: #E50914;
+            color: #FFFF00;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        /* Ajuste para fazer o carrossel mostrar vários itens */
-        .carousel-inner {
-            display: flex;
-        }
-        .carousel-item {
-            display: block;
-            margin-right: 0;
-            flex: 0 0 calc(100% / 5); /* 5 itens em telas grandes */
-            padding: 0 5px; /* Adiciona um pequeno espaçamento entre os cards */
+        h2 {
+            color: #FFFFFF;
         }
         .card-img-top {
-             aspect-ratio: 2 / 3; /* Proporção de pôster */
+             aspect-ratio: 2 / 3;
              object-fit: cover;
              border-radius: 5px;
         }
+        /* Remove o fundo padrão das setas para usar o nosso */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: auto;
+            opacity: 1;
+        }
+
         /* Animação da barra de notícias */
         .news-ticker p {
             margin: 0;
@@ -46,33 +50,6 @@
         .news-ticker-container:hover .news-ticker p {
             animation-play-state: paused;
         }
-
-        /* Responsividade do Carrossel */
-        @media (max-width: 1200px) { .carousel-item { flex: 0 0 calc(100% / 4); } } /* 4 itens */
-        @media (max-width: 992px) { .carousel-item { flex: 0 0 calc(100% / 3); } } /* 3 itens */
-        @media (max-width: 768px) { .carousel-item { flex: 0 0 calc(100% / 2); } } /* 2 itens */
-
-
-        /* --- AJUSTE DAS SETAS DO CARROSSEL (NOVO CÓDIGO) --- */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%; /* Largura da área da seta */
-            opacity: 1;
-        }
-        /* Move a seta para fora da área dos cards */
-        .carousel-control-prev {
-            transform: translateX(-100%);
-        }
-        .carousel-control-next {
-            transform: translateX(100%);
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            padding: 20px;
-        }
-
     </style>
 </head>
 <body class="bg-dark text-white">
@@ -87,37 +64,36 @@
             <h2 class="mb-3">Para quem gosta de uma ajudinha no trabalho...</h2>
             <div id="carouselAjudinha" class="carousel slide">
                 <div class="carousel-inner">
-                    <div class="carousel-item active"><a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/descricao-de-imagens.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/formatacao-de-formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/minhas-metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/inicie-sua-jornada-2u7pYJ.tRc6iYAl52pOrgw" target="_blank"><img src="images/inicie-sua-jornada.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/eu-indico-sfdD12b2RXKv5eizGte4kA" target="_blank"><img src="images/eu-indico.png" class="card-img-top" alt="eu indico"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/novos-desafios-02_KGT5mQA.u8jwbmtFeDw" target="_blank"><img src="images/novos-desafios.png" class="card-img-top" alt="Novos Desafios"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/Minhas-metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-            </div>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="mb-3">Porque você assistiu: Apertem os cintos, o Conteudista sumiu...</h2>
-            <div id="carouselAssistiu" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active"><a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/descricao-de-imagem.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
-                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/formatacao-de-formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
-                    <div class="carousel-item"><a href="#" target="_blank"><img src="images/Minhas-metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
+                    <div class="carousel-item active">
+                        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
+                            <div class="col"><a href="..."><img src="images/descricao-de-imagens.png" class="card-img-top" alt="..."></a></div>
+                            <div class="col"><a href="..."><img src="images/formatacao-de-formulas.png" class="card-img-top" alt="..."></a></div>
+                            <div class="col"><a href="..."><img src="images/minhas-metas.png" class="card-img-top" alt="..."></a></div>
+                            <div class="col"><a href="..."><img src="images/inicie-sua-jornada.png" class="card-img-top" alt="..."></a></div>
+                            <div class="col"><a href="..."><img src="images/eu-indico.png" class="card-img-top" alt="..."></a></div>
+                        </div>
                     </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselAssistiu" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselAssistiu" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    <div class="carousel-item">
+                         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
+                            <div class="col"><a href="..."><img src="images/novos-desafios.png" class="card-img-top" alt="..."></a></div>
+                            <div class="col"><a href="..."><img src="images/Minhas-metas.png" class="card-img-top" alt="..."></a></div>
+                            </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
         </section>
 
-    </main>
+        </main>
 
     <div class="news-ticker-container fixed-bottom bg-black p-2 border-top border-danger">
         <div class="news-ticker">
-             <p>Seja bem-vindo ao DesignerFlix! • Encerramento de módulos: 2026/1: 18 de agosto - 51/2026: 15 de setembro - 52/2026: 17 de novembro •• Prazo final para a entrega do relatório de julho: 05 de agosto.</p>
+             <p>Seja bem-vindo ao DesignerFlix! • ... </p>
         </div>
     </div>
     
