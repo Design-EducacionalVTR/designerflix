@@ -66,19 +66,26 @@
         .news-ticker-container:hover .news-ticker p {
             animation-play-state: paused;
         }
+        
+        /* 5. ESTILO DA NOVA LOGO EDTECH (ADICIONADO) */
+        #edtech-logo {
+            height: 60px; /* Você pode ajustar este valor como preferir */
+            width: auto;  /* Mantém a proporção da imagem automaticamente */
+        }
     </style>
 </head>
 <body class="bg-dark text-white">
 
-    <header class="container my-4">
-        <h1 class="main-logo-text">Designerflix</h1>
+    <header class="container my-4 d-flex justify-content-between align-items-center">
+        <h1 class="main-logo-text mb-0">Designerflix</h1>
+        <img src="images/Logo Edtech.png" alt="Logo Edtech" id="edtech-logo">
     </header>
 
     <main class="container">
 
         <section class="mb-5">
-            <h2 class="mb-3">Para quem gosta de uma ajudinha no trabalho...</h2>
-            <div id="carouselAjudinha" class="carousel slide">
+            <h2 class="mb-3">Design de Conteúdo</h2>
+            <div id="carouselAjudinha" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
@@ -88,7 +95,7 @@
                             <div class="col"><a href="https://www.perplexity.ai/collections/inicie-sua-jornada-2u7pYJ.tRc6iYAl52pOrgw" target="_blank"><img src="images/inicie-sua-jornada.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
                             <div class="col"><a href="https://www.perplexity.ai/collections/eu-indico-sfdD12b2RXKv5eizGte4kA" target="_blank"><img src="images/eu-indico.png" class="card-img-top" alt="eu indico"></a></div>
                             <div class="col"><a href="https://www.perplexity.ai/collections/novos-desafios-02_KGT5mQA.u8jwbmtFeDw" target="_blank"><img src="images/novos-desafios.png" class="card-img-top" alt="Novos Desafios"></a></div>
-                            </div>
+                        </div>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
@@ -96,7 +103,7 @@
             </div>
         </section>
 
-        </main>
+    </main>
 
     <div class="news-ticker-container fixed-bottom bg-black p-2 border-top border-danger">
         <div class="news-ticker">
