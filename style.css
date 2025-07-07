@@ -28,11 +28,12 @@ h2 {
 
 /* O Container dos Pôsteres (A parte mais importante!) */
 .posters-container {
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: auto;
-    padding: 20px 0; /* <--- CORRIGIDO. Sem padding lateral. */
-    gap: 15px;
+    display: flex; /* Alinha os itens um ao lado do outro */
+    /* DEVOLVEMOS O PADDING LATERAL DE 50PX */
+    padding: 20px 50px; 
+    gap: 15px; /* Espaço entre os pôsteres */
+    overflow-x: auto;   
+    overflow-y: hidden; 
 }
 
 /* Estilizando a barra de rolagem (opcional, mas deixa mais bonito) */
@@ -128,36 +129,37 @@ h2 {
 
 /* Oculta a barra de rolagem padrão */
 .posters-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari e Opera */
+    display: none;
 }
 .posters-container {
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Container que agrupa setas e pôsteres */
 .row-content {
-    position: relative; /* Base para o posicionamento absoluto das setas */
+    position: relative; 
 }
 
-/* Estilo geral das setas (MODIFICADO) */
+/* Estilo geral das setas (TOTALMENTE REFEITO) */
 .arrow {
     position: absolute;
-    width: 45px; /* Tamanho da seta */
-    height: 45px; /* Tamanho da seta */
-    background-color: rgba(20, 20, 20, 0.7); /* Fundo um pouco mais sólido */
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 50px; /* A LARGURA DA SETA É A MESMA DO PADDING */
     border: none;
-    border-radius: 50%; /* Deixa a seta redonda */
     color: white;
-    font-size: 2rem; /* Tamanho do ícone da seta */
-    font-weight: bold;
+    font-size: 3rem;
+    font-weight: 100;
     cursor: pointer;
     z-index: 20;
-    transition: all 0.2s ease;
-    
-    /* Centraliza a seta verticalmente */
-    top: 50%;
-    transform: translateY(-50%);
+    transition: background-color 0.2s;
+
+    /* Centraliza o ícone da seta dentro do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     /* Esconde as setas por padrão */
     opacity: 0;
@@ -170,14 +172,17 @@ h2 {
     visibility: visible;
 }
 
-.arrow:hover {
-    background-color: rgba(0, 0, 0, 1);
+/* Posiciona cada seta em seu lado, OCUPANDO O PADDING */
+.left-arrow {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
 }
 
-/* Posiciona cada seta em seu lado (MODIFICADO) */
-.left-arrow {
-    left: -50px; /* <--- CORRIGIDO. Valor bem maior. */
-}
 .right-arrow {
-    right: -50px; /* <--- CORRIGIDO. Valor bem maior. */
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
