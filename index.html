@@ -6,17 +6,14 @@
     <title>DesignerFlix</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="icon" type="image/png" href="favicon.ico">
 
     <style>
         body {
-            /* Usando as classes do Bootstrap, essa linha não é mais necessária, 
-               mas podemos forçar a cor de fundo aqui se quisermos. */
-            background-color: #212529; /* Um cinza escuro padrão do Bootstrap */
+            background-color: #212529;
         }
         .main-logo-text {
-            color: #E50914; /* Vermelho Netflix */
+            color: #E50914;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -28,69 +25,62 @@
         .carousel-item {
             display: block;
             margin-right: 0;
-            flex: 0 0 calc(100% / 5); /* Mostra 5 itens em telas grandes */
+            flex: 0 0 calc(100% / 5); /* 5 itens em telas grandes */
         }
-        /* Para telas menores */
-        @media (max-width: 992px) {
-            .carousel-item { flex: 0 0 calc(100% / 3); } /* 3 itens */
+        .card-img-top {
+             aspect-ratio: 2 / 3; /* Proporção de pôster */
+             object-fit: cover;
         }
-        @media (max-width: 768px) {
-            .carousel-item { flex: 0 0 calc(100% / 2); } /* 2 itens */
+        /* Animação da barra de notícias */
+        .news-ticker p {
+            margin: 0;
+            white-space: nowrap;
+            animation: ticker-scroll 40s linear infinite;
         }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .news-ticker-container:hover .news-ticker p {
+            animation-play-state: paused;
+        }
+
+        /* Responsividade do Carrossel */
+        @media (max-width: 1200px) { .carousel-item { flex: 0 0 calc(100% / 4); } } /* 4 itens */
+        @media (max-width: 992px) { .carousel-item { flex: 0 0 calc(100% / 3); } } /* 3 itens */
+        @media (max-width: 768px) { .carousel-item { flex: 0 0 calc(100% / 2); } } /* 2 itens */
     </style>
 </head>
-<body class="bg-dark text-white"> <header class="container my-4"> <h1 class="main-logo-text">Designerflix</h1>
+<body class="bg-dark text-white">
+
+    <header class="container my-4">
+        <h1 class="main-logo-text">Designerflix</h1>
     </header>
 
     <main class="container">
 
-        <section class="row-catalog mb-5">
+        <section class="mb-5">
             <h2 class="mb-3">Para quem gosta de uma ajudinha no trabalho...</h2>
-            
-            <div id="carousel1" class="carousel slide">
+            <div id="carouselAjudinha" class="carousel slide">
                 <div class="carousel-inner">
-
-                    <div class="carousel-item active">
-                        <div class="card bg-black h-100">
-                             <a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank">
-                                <img src="images/descricao-de-imagens.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM">
-                             </a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card bg-black h-100">
-                            <a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank">
-                                <img src="images/formatacao-de-formulas.png" class="card-img-top" alt="Formatação de fórmulas">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card bg-black h-100">
-                             <a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank">
-                                <img src="images/minhas-metas.png" class="card-img-top" alt="Minhas Metas">
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                    <div class="carousel-item active"><a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/descricao-de-imagens.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/formatacao-de-formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/minhas-metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/inicie-sua-jornada-2u7pYJ.tRc6iYAl52pOrgw" target="_blank"><img src="images/inicie-sua-jornada.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/eu-indico-sfdD12b2RXKv5eizGte4kA" target="_blank"><img src="images/eu-indico.png" class="card-img-top" alt="eu indico"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/novos-desafios-02_KGT5mQA.u8jwbmtFeDw" target="_blank"><img src="images/novos-desafios.png" class="card-img-top" alt="Novos Desafios"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/Minhas-metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
             </div>
         </section>
 
-        </main>
-
-    <div class="fixed-bottom bg-black p-2 border-top border-danger">
-        <p class="text-center text-white small mb-0">
-             Seja bem-vindo ao DesignerFlix! • Encerramento de módulos: 2026/1: 18 de agosto - 51/2026: 15 de setembro - 52/2026: 17 de novembro •• Prazo final para a entrega do relatório de julho: 05 de agosto.
-        </p>
-        </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        <section class="mb-5">
+            <h2 class="mb-3">Porque você assistiu: Apertem os cintos, o Conteudista sumiu...</h2>
+            <div id="carouselAssistiu" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active"><a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/descricao-de-imagem.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
+                    <div class="carousel-item"><a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/formatacao-de-formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
+                    <div class="carousel-item"><a href="#" target="_blank"><img src="images/Minhas-metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
+                    <div class="carousel-item"><a href="#" target="_blank"><img src="
