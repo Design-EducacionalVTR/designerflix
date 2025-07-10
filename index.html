@@ -371,15 +371,21 @@
                     });
                 }
 
-                // 7. Define o que acontece depois de 2 segundos
-                setTimeout(function() {
-                    // Esconde o preloader com a animação de fade
-                    preloader.classList.add('hidden');
+            // 7. Define o que acontece depois de 2.2 segundos
+setTimeout(function() {
+    // Inicia a animação de desaparecimento do preloader
+    preloader.classList.add('hidden');
 
-                    // Mostra o conteúdo principal
-                    mainContent.style.display = 'block';
+    // Mostra o conteúdo principal
+    mainContent.style.display = 'block';
 
-                }, 2200); // 2200ms = 2.2 segundos para dar tempo do som
+    // **A CORREÇÃO DEFINITIVA ESTÁ AQUI**
+    // Garante a remoção completa do preloader após a animação de fade
+    setTimeout(function() {
+        preloader.style.display = 'none'; // Remove o "vidro fantasma"
+    }, 700); // Este tempo (700ms) é a duração da transição no seu CSS
+
+}, 2200);
             });
         }
     });
