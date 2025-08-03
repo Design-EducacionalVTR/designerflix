@@ -100,131 +100,39 @@
             transition: opacity 0.7s ease, visibility 0.7s ease;
         }
         .preloader-logo-img {
-            position: absolute; /* Permite que a imagem seja posicionada independentemente */
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;      /* Ocupa 100% da largura do pai (#preloader) */
-            height: 100%;     /* Ocupa 100% da altura do pai (#preloader) */
-            object-fit: contain; /* Garante que a imagem inteira caiba na tela sem cortar, mantendo a proporção */
-            animation: preloader-thump 1.2s ease-out infinite alternate; /* Mantém a animação */
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: preloader-thump 1.2s ease-out infinite alternate;
         }
         @keyframes preloader-thump { from { transform: scale(1); } to { transform: scale(1.1); } }
         #preloader.visible { display: flex; justify-content: center; align-items: center; }
         #preloader.hidden { opacity: 0; visibility: hidden; }
 
         /* 7. ESTILOS DA TELA DE PERFIS */
-        .profile-screen-title {
-            font-size: 3rem;
-            font-weight: 500;
-            color: #fff;
-            margin-bottom: 2rem;
-        }
-        .profile-list {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .profile-card {
-            text-decoration: none;
-        }
-        .profile-card .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 8px;
-            border: 4px solid transparent;
-            object-fit: cover;
-            transition: border-color 0.2s;
-        }
-        .profile-card:hover .avatar {
-            border-color: #fff;
-        }
-        .profile-name {
-            color: grey;
-            margin-top: 0.75rem;
-            font-size: 1.2rem;
-            transition: color 0.2s;
-        }
-        .profile-card:hover .profile-name {
-            color: #fff;
-        }
-        .add-profile .avatar {
-            background-color: rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 5rem;
-            font-weight: 100;
-            color: grey;
-        }
-        .add-profile:hover .avatar {
-            background-color: rgba(255,255,255,0.2);
-            border-color: transparent;
-        }
-        .manage-profiles-btn {
-            background-color: transparent;
-            border: 1px solid grey;
-            color: grey;
-            padding: 0.5rem 1.5rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .manage-profiles-btn:hover {
-            border-color: #fff;
-            color: #fff;
-        }
+        .profile-screen-title { font-size: 3rem; font-weight: 500; color: #fff; margin-bottom: 2rem; }
+        .profile-list { display: flex; gap: 2rem; margin-bottom: 3rem; }
+        .profile-card { text-decoration: none; }
+        .profile-card .avatar { width: 150px; height: 150px; border-radius: 8px; border: 4px solid transparent; object-fit: cover; transition: border-color 0.2s; }
+        .profile-card:hover .avatar { border-color: #fff; }
+        .profile-name { color: grey; margin-top: 0.75rem; font-size: 1.2rem; transition: color 0.2s; }
+        .profile-card:hover .profile-name { color: #fff; }
+        .add-profile .avatar { background-color: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; font-size: 5rem; font-weight: 100; color: grey; }
+        .add-profile:hover .avatar { background-color: rgba(255,255,255,0.2); border-color: transparent; }
+        .manage-profiles-btn { background-color: transparent; border: 1px solid grey; color: grey; padding: 0.5rem 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; }
+        .manage-profiles-btn:hover { border-color: #fff; color: #fff; }
 
         /* 8. MENU HAMBÚRGUER (ADICIONADO) */
-        .hamburger-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1050; /* Acima da maioria dos elementos */
-        }
-        .hamburger-btn .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: #fff;
-            transition: all 0.3s ease-in-out;
-        }
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -300px; /* Começa fora da tela */
-            width: 300px;
-            height: 100%;
-            background-color: #141414;
-            padding: 60px 20px 20px 20px;
-            z-index: 1040;
-            transition: left 0.3s ease-in-out;
-            overflow-y: auto;
-        }
-        .side-menu.is-open {
-            left: 0; /* Entra na tela */
-        }
-        .side-menu a {
-            color: #aaa;
-            text-decoration: none;
-            display: block;
-            padding: 8px 0;
-            font-size: 1rem;
-        }
-        .side-menu a:hover {
-            color: #fff;
-        }
-        .side-menu h3 {
-            color: #fff;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
-        }
+        .hamburger-btn { background: transparent; border: none; cursor: pointer; padding: 10px; z-index: 1050; }
+        .hamburger-btn .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: #fff; transition: all 0.3s ease-in-out; }
+        .side-menu { position: fixed; top: 0; right: -300px; /* Começa fora da tela, à DIREITA */ width: 300px; height: 100%; background-color: #141414; padding: 60px 20px 20px 20px; z-index: 1040; transition: right 0.3s ease-in-out; overflow-y: auto; }
+        .side-menu.is-open { right: 0; /* Entra na tela pela DIREITA */ }
+        .side-menu a { color: #aaa; text-decoration: none; display: block; padding: 8px 0; font-size: 1rem; }
+        .side-menu a:hover { color: #fff; }
+        .side-menu h3 { color: #fff; font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
     </style>
 </head>
 <body class="bg-dark text-white">
@@ -248,15 +156,14 @@
 
     <div id="main-content">
         <header class="container my-4 d-flex justify-content-between align-items-center">
+            <h1 class="main-logo-text mb-0">
+                Designerflix <img src="images/icon-logo.png" alt="Ícone" class="logo-icon">
+            </h1>
             <button class="hamburger-btn" id="hamburger-btn">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-            <h1 class="main-logo-text mb-0">
-                Designerflix <img src="images/icon-logo.png" alt="Ícone" class="logo-icon">
-            </h1>
-            <img src="images/logo-edtech.png" alt="Logo Edtech" id="edtech-logo">
         </header>
     
         <main class="container">
@@ -335,14 +242,38 @@
                     <button class="carousel-control-next" type="button" data-bs-target="#carousel4" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
                 </div>
             </section>
-
+            
+            <section class="mb-5">
+                <h2 class="mb-3">Onde Nascem as Ideias: Nosso Catálogo de Recursos</h2>
+                <div id="carousel2" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
+                                <div class="col"><a href="https://www.perplexity.ai/collections/dialogo-uM3OMFgwRRWj5Me7VGcVtg" target="_blank"><img src="images/1dialogo.png" class="card-img-top" alt="Dialogo"></a></div>
+                                <div class="col"><a href="https://www.perplexity.ai/collections/assinalar-XZ2pvQp5SueRKUFSUHfO6A" target="_blank"><img src="images/1assinalar.png" class="card-img-top" alt="Assinalar"></a></div>
+                                <div class="col"><a href="https://www.perplexity.ai/collections/complete-as-lacunas-1VMiUlTgRnyUXTJz0feZLQ" target="_blank"><img src="images/1lacunas.png" class="card-img-top" alt="Complete as Lacunas"></a></div>
+                                <div class="col"><a href="https://www.perplexity.ai/collections/cards-iw4HjAiIRhK7JWMNpHHJ0g" target="_blank"><img src="images/1cards.png" class="card-img-top" alt="Cards"></a></div>
+                                <div class="col"><a href="https://www.perplexity.ai/collections/arrasta-e-solta-uYj4ImCiTE6moOEFA_I3Ng" target="_blank"><img src="images/1arrasta.png" class="card-img-top" alt="Arrasta e Solta"></a></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
+                               <div class="col"><a href="https://www.perplexity.ai/collections/tabuleiro-_1CiebUMRia1CXvcdXwC.A" target="_blank"><img src="images/1tabuleiro.png" class="card-img-top" alt="Tabuleiro"></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+                </div>
+            </section>
+            
             <section class="mb-5">
                 <h2 class="mb-3">Em breve no cátalogo</h2>
                 <div id="carousel5" class="carousel slide"> <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                            <div class="col"><img src="images/relatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></div>
-                             <div class="col"><img src="images/coordenadores.png" class="card-img-top" alt="EMAIL COORDENADORES"></div>
+                                <div class="col"><img src="images/relatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></div>
+                                <div class="col"><img src="images/coordenadores.png" class="card-img-top" alt="EMAIL COORDENADORES"></div>
                             </div>
                         </div>
                     </div>
@@ -357,8 +288,8 @@
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
                                 <div class="col"><img src="images/2026-1.png" class="card-img-top" alt="Módulo 2026/1"></div>
-                                 <div class="col"><img src="images/51-2026.png" class="card-img-top" alt="Módulo 51/2026"></div>
-                                 <div class="col"><img src="images/52-2026.png" class="card-img-top" alt="Módulo 52/2026"></div>
+                                <div class="col"><img src="images/51-2026.png" class="card-img-top" alt="Módulo 51/2026"></div>
+                                <div class="col"><img src="images/52-2026.png" class="card-img-top" alt="Módulo 52/2026"></div>
                             </div>
                         </div>
                     </div>
@@ -366,7 +297,7 @@
                     <button class="carousel-control-next" type="button" data-bs-target="#carousel6" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
                 </div>
             </section>
-        
+    
         </main>
     
         <div class="news-ticker-container fixed-bottom bg-black p-2 border-top border-danger">
