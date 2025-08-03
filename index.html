@@ -34,7 +34,6 @@
         .news-ticker-container:hover .news-ticker p { animation-play-state: paused; }
         
         /* 5. LOGOS */
-        #edtech-logo { height: 60px; width: auto; }
         .logo-icon { height: 2.8rem; margin-left: 12px; }
 
         /* 6. PRELOADER */
@@ -57,16 +56,49 @@
         .manage-profiles-btn { background-color: transparent; border: 1px solid grey; color: grey; padding: 0.5rem 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; }
         .manage-profiles-btn:hover { border-color: #fff; color: #fff; }
 
-        /* 8. MENU HAMBÚRGUER */
-        .hamburger-btn { background: transparent; border: none; cursor: pointer; padding: 10px; z-index: 1050; }
-        .hamburger-btn .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: #fff; transition: all 0.3s ease-in-out; }
-        .side-menu { position: fixed; top: 0; right: -320px; width: 320px; height: 100%; background-color: #141414; padding: 60px 20px 20px 20px; z-index: 1040; transition: right 0.4s ease, opacity 0.4s ease; overflow-y: auto; opacity: 0; }
-        .side-menu.is-open { right: 0; opacity: 1; }
-        .side-menu ul { list-style: none; padding: 0; }
-        .side-menu a { color: #aaa; text-decoration: none; display: block; padding: 10px 0; font-size: 1rem; }
-        .side-menu a:hover { color: #fff; }
-        .side-menu h3 { color: #fff; font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
-        .side-menu h3:first-child { margin-top: 0; }
+        /* 8. MENU HAMBÚRGUER (CORRIGIDO) */
+.hamburger-btn {
+    background-color: #ffc629; /* Cor do Designerflix */
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1050;
+    border-radius: 5px; /* Deixa levemente arredondado */
+    transition: all 0.2s ease-in-out;
+}
+.hamburger-btn:hover {
+    filter: brightness(0.9);
+}
+.hamburger-btn .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #210047; /* Cor de contraste (roxo do fundo) */
+    transition: all 0.3s ease-in-out;
+}
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Começa fora da tela, à DIREITA */
+    width: 320px;
+    height: 100%;
+    background-color: #141414;
+    padding: 60px 20px 20px 20px;
+    z-index: 1040;
+    transition: right 0.4s ease, opacity 0.4s ease;
+    overflow-y: auto;
+    opacity: 0;
+}
+.side-menu.is-open {
+    right: 0; /* Entra na tela pela DIREITA */
+    opacity: 1;
+}
+.side-menu ul { list-style: none; padding: 0; }
+.side-menu a { color: #aaa; text-decoration: none; display: block; padding: 10px 0; font-size: 1rem; }
+.side-menu a:hover { color: #fff; }
+.side-menu h3 { color: #fff; font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+.side-menu h3:first-child { margin-top: 0; }
     </style>
 </head>
 <body class="bg-dark text-white">
@@ -127,17 +159,16 @@
     </div>
 
     <div id="main-content">
-        <header class="container my-4 d-flex justify-content-between align-items: center">
-            <button class="hamburger-btn" id="hamburger-btn">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <h1 class="main-logo-text mb-0">
-                Designerflix <img src="images/icon-logo.png" alt="Ícone" class="logo-icon">
-            </h1>
-            <img src="images/logo-edtech.png" alt="Logo Edtech" id="edtech-logo">
-        </header>
+<header class="container my-4 d-flex justify-content-between align-items-center">
+    <h1 class="main-logo-text mb-0">
+        Designerflix <img src="images/icon-logo.png" alt="Ícone" class="logo-icon">
+    </h1>
+    <button class="hamburger-btn" id="hamburger-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+</header>
     
         <main class="container">
     
@@ -326,3 +357,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
