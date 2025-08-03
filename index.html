@@ -10,109 +10,41 @@
 
     <style>
         /* CSS para controle das telas principais */
-        #profile-screen {
-            display: flex; 
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-        #preloader, #main-content {
-            display: none;
-        }
+        #profile-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; text-align: center; }
+        #preloader, #main-content { display: none; }
 
         /* 1. Paleta de Cores */
-        body.bg-dark {
-            background-color: #210047 !important; 
-        }
-        .main-logo-text {
-            color: #ffc629;
-        }
-        h2 {
-            color: #FFFFFF;
-        }
+        body.bg-dark { background-color: #210047 !important; }
+        .main-logo-text { color: #ffc629; }
+        h2 { color: #FFFFFF; }
 
         /* 2. Estilos Gerais e do Carrossel */
-        .main-logo-text {
-            color: #ffc629;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-        }
-        .card-img-top {
-             aspect-ratio: 2 / 3;
-             object-fit: cover;
-             border-radius: 4px;
-        }
-        .carousel-item .col {
-            padding: 0 8px; /* Espaçamento entre os cards */
-        }
+        .main-logo-text { color: #ffc629; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; }
+        .card-img-top { aspect-ratio: 2 / 3; object-fit: cover; border-radius: 4px; }
+        .carousel-item .col { padding: 0 8px; }
         
-        /* 3. CORREÇÃO DAS SETAS */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-            background: transparent; /* Remove fundo da área total */
-            opacity: 1;
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo do ícone */
-            border-radius: 50%;
-            padding: 20px;
-            background-size: 50%; /* Tamanho do ícone da seta em si */
-        }
+        /* 3. SETAS */
+        .carousel-control-prev, .carousel-control-next { width: 5%; background: transparent; opacity: 1; }
+        .carousel-control-prev-icon, .carousel-control-next-icon { background-color: rgba(0, 0, 0, 0.7); border-radius: 50%; padding: 20px; background-size: 50%; }
         
-        /* 4. CORREÇÃO DA BARRA DE NOTÍCIAS */
-        .news-ticker-container {
-            overflow: hidden; /* Força o texto a ficar dentro da barra */
-        }
-        .news-ticker p {
-            margin: 0;
-            white-space: nowrap;
-            animation: ticker-scroll 40s linear infinite;
-        }
-        @keyframes ticker-scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .news-ticker-container:hover .news-ticker p {
-            animation-play-state: paused;
-        }
+        /* 4. BARRA DE NOTÍCIAS */
+        .news-ticker-container { overflow: hidden; }
+        .news-ticker p { margin: 0; white-space: nowrap; animation: ticker-scroll 40s linear infinite; }
+        @keyframes ticker-scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .news-ticker-container:hover .news-ticker p { animation-play-state: paused; }
         
-        /* 5. ESTILO DA NOVA LOGO EDTECH */
-        #edtech-logo {
-            height: 60px;
-            width: auto;
-        }
-        .logo-icon {
-            height: 2.8rem;
-            margin-left: 12px;
-        }
+        /* 5. LOGOS */
+        #edtech-logo { height: 60px; width: auto; }
+        .logo-icon { height: 2.8rem; margin-left: 12px; }
 
-        /* 6. ESTILOS DO PRELOADER */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
-            background-color: #210047;
-            transition: opacity 0.7s ease, visibility 0.7s ease;
-        }
-        .preloader-logo-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            animation: preloader-thump 1.2s ease-out infinite alternate;
-        }
+        /* 6. PRELOADER */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: #210047; transition: opacity 0.7s ease, visibility 0.7s ease; }
+        .preloader-logo-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; animation: preloader-thump 1.2s ease-out infinite alternate; }
         @keyframes preloader-thump { from { transform: scale(1); } to { transform: scale(1.1); } }
         #preloader.visible { display: flex; justify-content: center; align-items: center; }
         #preloader.hidden { opacity: 0; visibility: hidden; }
 
-        /* 7. ESTILOS DA TELA DE PERFIS */
+        /* 7. TELA DE PERFIS */
         .profile-screen-title { font-size: 3rem; font-weight: 500; color: #fff; margin-bottom: 2rem; }
         .profile-list { display: flex; gap: 2rem; margin-bottom: 3rem; }
         .profile-card { text-decoration: none; }
@@ -125,20 +57,58 @@
         .manage-profiles-btn { background-color: transparent; border: 1px solid grey; color: grey; padding: 0.5rem 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; }
         .manage-profiles-btn:hover { border-color: #fff; color: #fff; }
 
-        /* 8. MENU HAMBÚRGUER (ADICIONADO) */
+        /* 8. MENU HAMBÚRGUER (CORRIGIDO) */
         .hamburger-btn { background: transparent; border: none; cursor: pointer; padding: 10px; z-index: 1050; }
         .hamburger-btn .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: #fff; transition: all 0.3s ease-in-out; }
-        .side-menu { position: fixed; top: 0; right: -300px; /* Começa fora da tela, à DIREITA */ width: 300px; height: 100%; background-color: #141414; padding: 60px 20px 20px 20px; z-index: 1040; transition: right 0.3s ease-in-out; overflow-y: auto; }
-        .side-menu.is-open { right: 0; /* Entra na tela pela DIREITA */ }
-        .side-menu a { color: #aaa; text-decoration: none; display: block; padding: 8px 0; font-size: 1rem; }
+        .side-menu { position: fixed; top: 0; right: -320px; /* Começa fora da tela */ width: 320px; height: 100%; background-color: #141414; padding: 60px 20px 20px 20px; z-index: 1040; transition: right 0.4s ease, opacity 0.4s ease; overflow-y: auto; opacity: 0; }
+        .side-menu.is-open { right: 0; opacity: 1; }
+        .side-menu ul { list-style: none; padding: 0; }
+        .side-menu a { color: #aaa; text-decoration: none; display: block; padding: 10px 0; font-size: 1rem; }
         .side-menu a:hover { color: #fff; }
-        .side-menu h3 { color: #fff; font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .side-menu h3 { color: #fff; font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+        .side-menu h3:first-child { margin-top: 0; }
     </style>
 </head>
 <body class="bg-dark text-white">
 
     <div id="side-menu" class="side-menu">
-        </div>
+        <ul>
+            <li><h3>Adicionados recentemente</h3></li>
+            <li><a href="#card-relatorio">RELATÓRIO DE ATIVIDADES</a></li>
+            <li><a href="#card-1descricao">DESCRIÇÃO DE IMAGEM</a></li>
+            <li><a href="#card-1formulas">Formatação de fórmulas</a></li>
+            <li><a href="#card-1metas">Minhas Metas</a></li>
+            <li><a href="#card-1jornada">Inicie sua Jornada</a></li>
+            <li><a href="#card-1partituras">Descrição de Partituras</a></li>
+            <li><a href="#card-1desafios">Novos Desafios</a></li>
+
+            <li><h3>Onde Nascem as Ideias: Nosso Catálogo de Recursos.</h3></li>
+            <li><a href="#card-1dialogo">Dialogo</a></li>
+            <li><a href="#card-1assinalar">Assinalar</a></li>
+            <li><a href="#card-1lacunas">Complete as Lacunas</a></li>
+            <li><a href="#card-1cards">Cards</a></li>
+            <li><a href="#card-1arrasta">Arrasta e Solta</a></li>
+            <li><a href="#card-1tabuleiro">Tabuleiro</a></li>
+
+            <li><h3>Mapa da Mina: Manuais para o Design Educacional</h3></li>
+            <li><a href="#card-1novos">Recursos Interativos</a></li>
+            <li><a href="#card-1explora">Explora Recursos</a></li>
+            <li><a href="#card-1guia">Guia de Ferramentas DE's</a></li>
+            <li><a href="#card-1acervo">Acervo Vitru</a></li>
+            <li><a href="#card-1manual">Manual de Marca</a></li>
+            <li><a href="#card-1label">Referencial de Escrita</a></li>
+            <li><a href="#card-1cross">Metodologia Institucional</a></li>
+            <li><a href="#card-1pos">Referencial de Escrita (Pós)</a></li>
+
+            <li><h3>Assista Novamente</h3></li>
+            <li><a href="#card-1orientacoes">Orientações de Acessibilidade</a></li>
+            <li><a href="#card-1ciaed">Congresso CIAED</a></li>
+            <li><a href="#card-1design">Design Thinking</a></li>
+            <li><a href="#card-1checklist">Checklist de Verificação</a></li>
+            <li><a href="#card-1tour-museu">Tour Museu (Estático)</a></li>
+            <li><a href="#card-1repositorio">Repositório de Recursos IA</a></li>
+        </ul>
+    </div>
 
     <div id="profile-screen">
         <h2 class="profile-screen-title">Quem está assistindo?</h2>
@@ -174,17 +144,17 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><a href="https://projeto-relatorios-flask.onrender.com" target="_blank"><img src="images/lrelatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/1descricao.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/1formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/1metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/inicie-sua-jornada-2u7pYJ.tRc6iYAl52pOrgw" target="_blank"><img src="images/1jornada.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
+                                <div class="col"><a id="card-relatorio" href="https://projeto-relatorios-flask.onrender.com" target="_blank"><img src="images/lrelatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></a></div>
+                                <div class="col"><a id="card-1descricao" href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/1descricao.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
+                                <div class="col"><a id="card-1formulas" href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/1formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
+                                <div class="col"><a id="card-1metas" href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/1metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
+                                <div class="col"><a id="card-1jornada" href="https://www.perplexity.ai/collections/inicie-sua-jornada-2u7pYJ.tRc6iYAl52pOrgw" target="_blank"><img src="images/1jornada.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><a href="https://www.perplexity.ai/collections/descricao-de-partitura-musical-GAHc5NxORgaSa6A6rpP8bg" target="_blank"><img src="images/1partituras.png" class="card-img-top" alt="Descrição de Partituras"></a></div>
-                               <div class="col"><a href="https://www.perplexity.ai/collections/novos-desafios-02_KGT5mQA.u8jwbmtFeDw" target="_blank"><img src="images/1desafios.png" class="card-img-top" alt="Novos Desafios"></a></div>
+                                <div class="col"><a id="card-1partituras" href="https://www.perplexity.ai/collections/descricao-de-partitura-musical-GAHc5NxORgaSa6A6rpP8bg" target="_blank"><img src="images/1partituras.png" class="card-img-top" alt="Descrição de Partituras"></a></div>
+                               <div class="col"><a id="card-1desafios" href="https://www.perplexity.ai/collections/novos-desafios-02_KGT5mQA.u8jwbmtFeDw" target="_blank"><img src="images/1desafios.png" class="card-img-top" alt="Novos Desafios"></a></div>
                             </div>
                         </div>
                     </div>
@@ -194,23 +164,47 @@
             </section>
         
             <section class="mb-5">
+                <h2 class="mb-3">Onde Nascem as Ideias: Nosso Catálogo de Recursos.</h2>
+                <div id="carousel2" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
+                                <div class="col"><a id="card-1dialogo" href="https://www.perplexity.ai/collections/dialogo-uM3OMFgwRRWj5Me7VGcVtg" target="_blank"><img src="images/1dialogo.png" class="card-img-top" alt="Dialogo"></a></div>
+                                <div class="col"><a id="card-1assinalar" href="https://www.perplexity.ai/collections/assinalar-XZ2pvQp5SueRKUFSUHfO6A" target="_blank"><img src="images/1assinalar.png" class="card-img-top" alt="Assinalar"></a></div>
+                                <div class="col"><a id="card-1lacunas" href="https://www.perplexity.ai/collections/complete-as-lacunas-1VMiUlTgRnyUXTJz0feZLQ" target="_blank"><img src="images/1lacunas.png" class="card-img-top" alt="Complete as Lacunas"></a></div>
+                                <div class="col"><a id="card-1cards" href="https://www.perplexity.ai/collections/cards-iw4HjAiIRhK7JWMNpHHJ0g" target="_blank"><img src="images/1cards.png" class="card-img-top" alt="Cards"></a></div>
+                                <div class="col"><a id="card-1arrasta" href="https://www.perplexity.ai/collections/arrasta-e-solta-uYj4ImCiTE6moOEFA_I3Ng" target="_blank"><img src="images/1arrasta.png" class="card-img-top" alt="Arrasta e Solta"></a></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
+                               <div class="col"><a id="card-1tabuleiro" href="https://www.perplexity.ai/collections/tabuleiro-_1CiebUMRia1CXvcdXwC.A" target="_blank"><img src="images/1tabuleiro.png" class="card-img-top" alt="Tabuleiro"></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+                </div>
+            </section>
+            
+            <section class="mb-5">
                 <h2 class="mb-3">Mapa da Mina: Manuais para o Design Educacional</h2>
                 <div id="carousel3" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><a href="https://sites.google.com/unicesumar.com.br/recursos-interativos/in%C3%ADcio" target="_blank"><img src="images/1novos.png" class="card-img-top" alt="Recursos Interativos"></a></div>
-                                <div class="col"><a href="https://vitru-digital.web.app/explora-recursos/" target="_blank"><img src="images/1explora.png" class="card-img-top" alt="Explora Recursos"></a></div>
-                                <div class="col"><a href="https://sites.google.com/unicesumar.com.br/guia-de-ferramentas-ia/in%C3%ADcio" target="_blank"><img src="images/1guia.png" class="card-img-top" alt="Guia de Ferramentas DE's"></a></div>
-                                <div class="col"><a href="https://app.powerbi.com/view?r=eyJrIjoiZGYxZTQ3ZWQtZjUyMS00N2I1LTgyMGItZDEwZWFiODQyYzc4IiwidCI6ImIwZTczMzVmLWZkMWYtNDZhZC05OGM3LTU1ZTZlNGUyMjJlYSJ9&disablecdnExpiration=1745381102" target="_blank"><img src="images/1acervo.png" class="card-img-top" alt="Acervo Vitru"></a></div>
-                                <div class="col"><a href="https://livrodigital.uniasselvi.com.br/disciplina/manual_de/guia/inicio.html" target="_blank"><img src="images/1manual.png" class="card-img-top" alt="eu indico"></a></div>
+                                <div class="col"><a id="card-1novos" href="https://sites.google.com/unicesumar.com.br/recursos-interativos/in%C3%ADcio" target="_blank"><img src="images/1novos.png" class="card-img-top" alt="Recursos Interativos"></a></div>
+                                <div class="col"><a id="card-1explora" href="https://vitru-digital.web.app/explora-recursos/" target="_blank"><img src="images/1explora.png" class="card-img-top" alt="Explora Recursos"></a></div>
+                                <div class="col"><a id="card-1guia" href="https://sites.google.com/unicesumar.com.br/guia-de-ferramentas-ia/in%C3%ADcio" target="_blank"><img src="images/1guia.png" class="card-img-top" alt="Guia de Ferramentas DE's"></a></div>
+                                <div class="col"><a id="card-1acervo" href="https://app.powerbi.com/view?r=eyJrIjoiZGYxZTQ3ZWQtZjUyMS00N2I1LTgyMGItZDEwZWFiODQyYzc4IiwidCI6ImIwZTczMzVmLWZkMWYtNDZhZC05OGM3LTU1ZTZlNGUyMjJlYSJ9&disablecdnExpiration=1745381102" target="_blank"><img src="images/1acervo.png" class="card-img-top" alt="Acervo Vitru"></a></div>
+                                <div class="col"><a id="card-1manual" href="https://livrodigital.uniasselvi.com.br/disciplina/manual_de/guia/inicio.html" target="_blank"><img src="images/1manual.png" class="card-img-top" alt="Manual de Marca"></a></div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                               <div class="col"><a href="https://sites.google.com/unicesumar.com.br/referencialescrita-wl/guia-de-escrita" target="_blank"><img src="images/1label.png" class="card-img-top" alt="Novos Desafios"></a></div>
-                               <div class="col"><a href="https://sites.google.com/unicesumar.com.br/organizador/metodologia-institucional?authuser=0" target="_blank"><img src="images/1cross.png" class="card-img-top" alt="Novos Desafios"></a></div>
-                                <div class="col"><a href="https://sites.google.com/unicesumar.com.br/referencialdeescritapos/guia-de-escrita" target="_blank"><img src="images/1pos.png" class="card-img-top" alt="Novos Desafios"></a></div>
+                               <div class="col"><a id="card-1label" href="https://sites.google.com/unicesumar.com.br/referencialescrita-wl/guia-de-escrita" target="_blank"><img src="images/1label.png" class="card-img-top" alt="Referencial de Escrita"></a></div>
+                               <div class="col"><a id="card-1cross" href="https://sites.google.com/unicesumar.com.br/organizador/metodologia-institucional?authuser=0" target="_blank"><img src="images/1cross.png" class="card-img-top" alt="Metodologia Institucional"></a></div>
+                                <div class="col"><a id="card-1pos" href="https://sites.google.com/unicesumar.com.br/referencialdeescritapos/guia-de-escrita" target="_blank"><img src="images/1pos.png" class="card-img-top" alt="Referencial de Escrita (Pós)"></a></div>
                             </div>
                         </div>
                     </div>
@@ -225,16 +219,16 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><a href="https://drive.google.com/file/d/1XTiINiU26h5OYo3xkaSYcQKLmi1hIeCp/view?usp=drive_link" target="_blank"><img src="images/1orientacoes.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
-                                <div class="col"><a href="https://drive.google.com/file/d/1XXgjMgWrcClkLwnuZiu2YkmNWFj1l_f8/view?usp=drive_link" target="_blank"><img src="images/1ciaed.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
-                                <div class="col"><a href="https://drive.google.com/file/d/1ACb7LvwFrrXzmK6s2jw3bnUEE3tcf9_w/view?usp=drive_link" target="_blank"><img src="images/1design.png" class="card-img-top" alt="Minhas Metas"></a></div>
-                                <div class="col"><a href="https://drive.google.com/file/d/1WhTHL2-oC95G_pSyaTFXlm3K0BzQWxc1/view?usp=drive_link" target="_blank"><img src="images/1checklist.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
-                                <div class="col"><img src="images/1tour-museu.png" class="card-img-top" alt="Tour Museu"></div>
+                                <div class="col"><a id="card-1orientacoes" href="https://drive.google.com/file/d/1XTiINiU26h5OYo3xkaSYcQKLmi1hIeCp/view?usp=drive_link" target="_blank"><img src="images/1orientacoes.png" class="card-img-top" alt="Orientações de Acessibilidade"></a></div>
+                                <div class="col"><a id="card-1ciaed" href="https://drive.google.com/file/d/1XXgjMgWrcClkLwnuZiu2YkmNWFj1l_f8/view?usp=drive_link" target="_blank"><img src="images/1ciaed.png" class="card-img-top" alt="Congresso CIAED"></a></div>
+                                <div class="col"><a id="card-1design" href="https://drive.google.com/file/d/1ACb7LvwFrrXzmK6s2jw3bnUEE3tcf9_w/view?usp=drive_link" target="_blank"><img src="images/1design.png" class="card-img-top" alt="Design Thinking"></a></div>
+                                <div class="col"><a id="card-1checklist" href="https://drive.google.com/file/d/1WhTHL2-oC95G_pSyaTFXlm3K0BzQWxc1/view?usp=drive_link" target="_blank"><img src="images/1checklist.png" class="card-img-top" alt="Checklist de Verificação"></a></div>
+                                <div id="card-1tour-museu" class="col"><img src="images/1tour-museu.png" class="card-img-top" alt="Tour Museu"></div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                               <div class="col"><a href="https://design-educacionalvtr.github.io/recursos-IA/" target="_blank"><img src="images/1repositorio.png" class="card-img-top" alt="Novos Desafios"></a></div>
+                               <div class="col"><a id="card-1repositorio" href="https://design-educacionalvtr.github.io/recursos-IA/" target="_blank"><img src="images/1repositorio.png" class="card-img-top" alt="Repositório de Recursos IA"></a></div>
                             </div>
                         </div>
                     </div>
@@ -244,37 +238,13 @@
             </section>
             
             <section class="mb-5">
-                <h2 class="mb-3">Onde Nascem as Ideias: Nosso Catálogo de Recursos.</h2>
-                <div id="carousel2" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><a href="https://www.perplexity.ai/collections/dialogo-uM3OMFgwRRWj5Me7VGcVtg" target="_blank"><img src="images/1dialogo.png" class="card-img-top" alt="Dialogo"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/assinalar-XZ2pvQp5SueRKUFSUHfO6A" target="_blank"><img src="images/1assinalar.png" class="card-img-top" alt="Assinalar"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/complete-as-lacunas-1VMiUlTgRnyUXTJz0feZLQ" target="_blank"><img src="images/1lacunas.png" class="card-img-top" alt="Complete as Lacunas"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/cards-iw4HjAiIRhK7JWMNpHHJ0g" target="_blank"><img src="images/1cards.png" class="card-img-top" alt="Cards"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/arrasta-e-solta-uYj4ImCiTE6moOEFA_I3Ng" target="_blank"><img src="images/1arrasta.png" class="card-img-top" alt="Arrasta e Solta"></a></div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                               <div class="col"><a href="https://www.perplexity.ai/collections/tabuleiro-_1CiebUMRia1CXvcdXwC.A" target="_blank"><img src="images/1tabuleiro.png" class="card-img-top" alt="Tabuleiro"></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
-                </div>
-            </section>
-            
-            <section class="mb-5">
                 <h2 class="mb-3">Em breve no cátalogo</h2>
                 <div id="carousel5" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><img src="images/relatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></div>
-                                <div class="col"><img src="images/coordenadores.png" class="card-img-top" alt="EMAIL COORDENADORES"></div>
+                                <div id="card-relatorio-embreve" class="col"><img src="images/relatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></div>
+                                <div id="card-coordenadores-embreve" class="col"><img src="images/coordenadores.png" class="card-img-top" alt="EMAIL COORDENADORES"></div>
                             </div>
                         </div>
                     </div>
@@ -289,9 +259,9 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><img src="images/2026-1.png" class="card-img-top" alt="Módulo 2026/1"></div>
-                                <div class="col"><img src="images/51-2026.png" class="card-img-top" alt="Módulo 51/2026"></div>
-                                <div class="col"><img src="images/52-2026.png" class="card-img-top" alt="Módulo 52/2026"></div>
+                                <div id="card-modulo20261" class="col"><img src="images/2026-1.png" class="card-img-top" alt="Módulo 2026/1"></div>
+                                <div id="card-modulo512026" class="col"><img src="images/51-2026.png" class="card-img-top" alt="Módulo 51/2026"></div>
+                                <div id="card-modulo522026" class="col"><img src="images/52-2026.png" class="card-img-top" alt="Módulo 52/2026"></div>
                             </div>
                         </div>
                     </div>
@@ -341,12 +311,22 @@
             // Lógica do Menu Hambúrguer
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const sideMenu = document.getElementById('side-menu');
+            const menuLinks = document.querySelectorAll('#side-menu a');
 
             if (hamburgerBtn && sideMenu) {
                 hamburgerBtn.addEventListener('click', function() {
                     sideMenu.classList.toggle('is-open');
                 });
             }
+            
+            // Lógica para fechar o menu ao clicar em um link
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (sideMenu.classList.contains('is-open')) {
+                        sideMenu.classList.remove('is-open');
+                    }
+                });
+            });
         });
     </script>
     
