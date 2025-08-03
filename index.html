@@ -99,21 +99,20 @@
             background-color: #210047;
             transition: opacity 0.7s ease, visibility 0.7s ease;
         }
-.preloader-logo-img {
-    position: absolute; /* Permite que a imagem seja posicionada independentemente */
-    top: 0;
-    left: 0;
-    width: 100%;      /* Ocupa 100% da largura do pai (#preloader) */
-    height: 100%;     /* Ocupa 100% da altura do pai (#preloader) */
-    object-fit: contain; /* Garante que a imagem inteira caiba na tela sem cortar, mantendo a proporção */
-    animation: preloader-thump 1.2s ease-out infinite alternate; /* Mantém a animação */
-}
+        .preloader-logo-img {
+            position: absolute; /* Permite que a imagem seja posicionada independentemente */
+            top: 0;
+            left: 0;
+            width: 100%;      /* Ocupa 100% da largura do pai (#preloader) */
+            height: 100%;     /* Ocupa 100% da altura do pai (#preloader) */
+            object-fit: contain; /* Garante que a imagem inteira caiba na tela sem cortar, mantendo a proporção */
+            animation: preloader-thump 1.2s ease-out infinite alternate; /* Mantém a animação */
         }
         @keyframes preloader-thump { from { transform: scale(1); } to { transform: scale(1.1); } }
         #preloader.visible { display: flex; justify-content: center; align-items: center; }
         #preloader.hidden { opacity: 0; visibility: hidden; }
 
-        /* 7. ESTILOS DA TELA DE PERFIS (NOVO) */
+        /* 7. ESTILOS DA TELA DE PERFIS */
         .profile-screen-title {
             font-size: 3rem;
             font-weight: 500;
@@ -176,9 +175,62 @@
             border-color: #fff;
             color: #fff;
         }
+
+        /* 8. MENU HAMBÚRGUER (ADICIONADO) */
+        .hamburger-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1050; /* Acima da maioria dos elementos */
+        }
+        .hamburger-btn .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Começa fora da tela */
+            width: 300px;
+            height: 100%;
+            background-color: #141414;
+            padding: 60px 20px 20px 20px;
+            z-index: 1040;
+            transition: left 0.3s ease-in-out;
+            overflow-y: auto;
+        }
+        .side-menu.is-open {
+            left: 0; /* Entra na tela */
+        }
+        .side-menu a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            font-size: 1rem;
+        }
+        .side-menu a:hover {
+            color: #fff;
+        }
+        .side-menu h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body class="bg-dark text-white">
+
+    <div id="side-menu" class="side-menu">
+        </div>
 
     <div id="profile-screen">
         <h2 class="profile-screen-title">Quem está assistindo?</h2>
@@ -190,12 +242,17 @@
         </div>
     </div>
 
-  <div id="preloader">
-    <img src="images/preloader.png" alt="Carregando..." class="preloader-logo-img">
-</div>
+    <div id="preloader">
+        <img src="images/preloader.png" alt="Carregando..." class="preloader-logo-img">
+    </div>
 
     <div id="main-content">
         <header class="container my-4 d-flex justify-content-between align-items-center">
+            <button class="hamburger-btn" id="hamburger-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <h1 class="main-logo-text mb-0">
                 Designerflix <img src="images/icon-logo.png" alt="Ícone" class="logo-icon">
             </h1>
@@ -210,16 +267,16 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                 <div class="col"><a href="https://projeto-relatorios-flask.onrender.com" target="_blank"><img src="images/lrelatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></a></div>
+                                <div class="col"><a href="https://projeto-relatorios-flask.onrender.com" target="_blank"><img src="images/lrelatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></a></div>
                                 <div class="col"><a href="https://www.perplexity.ai/collections/descricao-da-imagem-jbyWzxcpQdqqWqRYCclwPg" target="_blank"><img src="images/1descricao.png" class="card-img-top" alt="DESCRIÇÃO DE IMAGEM"></a></div>
                                 <div class="col"><a href="https://www.perplexity.ai/collections/formatacao-de-formulas-CyFZHBSwQiCgjt4vt6YTVg" target="_blank"><img src="images/1formulas.png" class="card-img-top" alt="Formatação de fórmulas"></a></div>
                                 <div class="col"><a href="https://www.perplexity.ai/collections/minhas-metas-KTFH54OjRRG4E5rEjzCGIg" target="_blank"><img src="images/1metas.png" class="card-img-top" alt="Minhas Metas"></a></div>
                                 <div class="col"><a href="https://www.perplexity.ai/collections/inicie-sua-jornada-2u7pYJ.tRc6iYAl52pOrgw" target="_blank"><img src="images/1jornada.png" class="card-img-top" alt="Inicie sua Jornada"></a></div>
-                                </div>
+                            </div>
                         </div>
                         <div class="carousel-item">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                 <div class="col"><a href="https://www.perplexity.ai/collections/descricao-de-partitura-musical-GAHc5NxORgaSa6A6rpP8bg" target="_blank"><img src="images/1partituras.png" class="card-img-top" alt="Descrição de Partituras"></a></div>
+                                <div class="col"><a href="https://www.perplexity.ai/collections/descricao-de-partitura-musical-GAHc5NxORgaSa6A6rpP8bg" target="_blank"><img src="images/1partituras.png" class="card-img-top" alt="Descrição de Partituras"></a></div>
                                <div class="col"><a href="https://www.perplexity.ai/collections/novos-desafios-02_KGT5mQA.u8jwbmtFeDw" target="_blank"><img src="images/1desafios.png" class="card-img-top" alt="Novos Desafios"></a></div>
                             </div>
                         </div>
@@ -228,7 +285,7 @@
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselAjudinha" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
                 </div>
             </section>
-    
+        
             <section class="mb-5">
                 <h2 class="mb-3">Mapa da Mina: Manuais para o Design Educacional</h2>
                 <div id="carousel3" class="carousel slide">
@@ -254,7 +311,7 @@
                     <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
                 </div>
             </section>
-    
+        
             <section class="mb-5">
                 <h2 class="mb-3">Assista Novamente</h2>
                 <div id="carousel4" class="carousel slide">
@@ -279,56 +336,34 @@
                 </div>
             </section>
 
- <section class="mb-5">
-                <h2 class="mb-3">Onde Nascem as Ideias: Nosso Catálogo de Recursos</h2>
-                <div id="carousel2" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                                <div class="col"><a href="https://www.perplexity.ai/collections/dialogo-uM3OMFgwRRWj5Me7VGcVtg" target="_blank"><img src="images/1dialogo.png" class="card-img-top" alt="Dialogo"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/assinalar-XZ2pvQp5SueRKUFSUHfO6A" target="_blank"><img src="images/1assinalar.png" class="card-img-top" alt="Assinalar"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/complete-as-lacunas-1VMiUlTgRnyUXTJz0feZLQ" target="_blank"><img src="images/1lacunas.png" class="card-img-top" alt="Complete as Lacunas"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/cards-iw4HjAiIRhK7JWMNpHHJ0g" target="_blank"><img src="images/1cards.png" class="card-img-top" alt="Cards"></a></div>
-                                <div class="col"><a href="https://www.perplexity.ai/collections/arrasta-e-solta-uYj4ImCiTE6moOEFA_I3Ng" target="_blank"><img src="images/1arrasta.png" class="card-img-top" alt="Arrasta e Solta"></a></div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
-                               <div class="col"><a href="https://www.perplexity.ai/collections/tabuleiro-_1CiebUMRia1CXvcdXwC.A" target="_blank"><img src="images/1tabuleiro.png" class="card-img-top" alt="Tabuleiro"></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
-                </div>
-            </section>
-
- <section class="mb-5">
+            <section class="mb-5">
                 <h2 class="mb-3">Em breve no cátalogo</h2>
-                <div id="carousel2" class="carousel slide">
-                    <div class="carousel-inner">
+                <div id="carousel5" class="carousel slide"> <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
                             <div class="col"><img src="images/relatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></div>
                              <div class="col"><img src="images/coordenadores.png" class="card-img-top" alt="EMAIL COORDENADORES"></div>
                             </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel5" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel5" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
                 </div>
             </section>
-            
+        
             <section class="mb-5">
                 <h2 class="mb-3">Expiram em breve</h2>
-                <div id="carousel4" class="carousel slide">
-                    <div class="carousel-inner">
+                <div id="carousel6" class="carousel slide"> <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
                                 <div class="col"><img src="images/2026-1.png" class="card-img-top" alt="Módulo 2026/1"></div>
                                  <div class="col"><img src="images/51-2026.png" class="card-img-top" alt="Módulo 51/2026"></div>
                                  <div class="col"><img src="images/52-2026.png" class="card-img-top" alt="Módulo 52/2026"></div>
                             </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel4" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel4" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel6" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel6" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
                 </div>
             </section>
         
@@ -336,64 +371,39 @@
     
         <div class="news-ticker-container fixed-bottom bg-black p-2 border-top border-danger">
             <div class="news-ticker">
-                 <p>Seja bem-vindo ao DesignerFlix • Encerramento de módulos: 2026/1: 18 de agosto - 51/2026: 15 de setembro - 52/2026: 17 de novembro •• Prazo final para a entrega do relatório de julho: 05 de agosto.</p>
+                 <p>Seja bem-vindo ao DesignerFlix! • Encerramento de módulos: 2026/1: 18 de agosto - 51/2026: 15 de setembro - 52/2026: 17 de novembro •• Prazo final para a entrega do relatório de julho: 05 de agosto.</p>
             </div>
         </div>
         
         <audio id="tudum-sound" src="audio/tudum.mp3" preload="auto"></audio>
         
-      <script>
-    // Espera o documento carregar para garantir que todos os elementos existem
-    document.addEventListener('DOMContentLoaded', function() {
-
-        // 1. Seleciona todos os "atores" da nossa cena
-        const profileScreen = document.getElementById('profile-screen');
-        const preloader = document.getElementById('preloader');
-        const mainContent = document.getElementById('main-content');
-        const edtechersProfile = document.getElementById('profile-edtechers');
-        const tudumSound = document.getElementById('tudum-sound');
-
-        // 2. Adiciona um "ouvinte" de clique no perfil "Edtechers"
-        if (edtechersProfile) { // Verifica se o perfil existe antes de adicionar o ouvinte
-            edtechersProfile.addEventListener('click', function(event) {
-
-                // 3. Previne que o link '#' faça a página pular
-                event.preventDefault();
-
-                // --- AQUI COMEÇA A MÁGICA ---
-
-                // 4. Esconde a tela de perfis
-                profileScreen.style.display = 'none';
-
-                // 5. Mostra o preloader
-                preloader.classList.add('visible'); // Usa a classe CSS que criamos
-
-                // 6. Toca o som "tudum"
-                if (tudumSound) {
-                    tudumSound.play().catch(error => {
-                        console.log("A reprodução automática de áudio foi bloqueada pelo navegador.");
+        <script>
+            // Seu script de preloader existente
+            document.addEventListener('DOMContentLoaded', function() {
+                const profileScreen = document.getElementById('profile-screen');
+                const preloader = document.getElementById('preloader');
+                const mainContent = document.getElementById('main-content');
+                const edtechersProfile = document.getElementById('profile-edtechers');
+                const tudumSound = document.getElementById('tudum-sound');
+                if (edtechersProfile) {
+                    edtechersProfile.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        profileScreen.style.display = 'none';
+                        preloader.classList.add('visible');
+                        if (tudumSound) {
+                            tudumSound.play().catch(error => console.log("Autoplay do áudio foi bloqueado."));
+                        }
+                        setTimeout(function() {
+                            preloader.classList.add('hidden');
+                            mainContent.style.display = 'block';
+                            setTimeout(function() {
+                                preloader.style.display = 'none';
+                            }, 700);
+                        }, 2200);
                     });
                 }
-
-            // 7. Define o que acontece depois de 2.2 segundos
-setTimeout(function() {
-    // Inicia a animação de desaparecimento do preloader
-    preloader.classList.add('hidden');
-
-    // Mostra o conteúdo principal
-    mainContent.style.display = 'block';
-
-    // **A CORREÇÃO DEFINITIVA ESTÁ AQUI**
-    // Garante a remoção completa do preloader após a animação de fade
-    setTimeout(function() {
-        preloader.style.display = 'none'; // Remove o "vidro fantasma"
-    }, 700); // Este tempo (700ms) é a duração da transição no seu CSS
-
-}, 2200);
             });
-        }
-    });
-</script>
+        </script>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
