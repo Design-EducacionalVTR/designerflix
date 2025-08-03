@@ -244,7 +244,7 @@
             </section>
             
             <section class="mb-5">
-                <h2 class="mb-3">Onde Nascem as Ideias: Nosso Catálogo de Recursos</h2>
+                <h2 class="mb-3">Onde Nascem as Ideias: Nosso Catálogo de Recursos.</h2>
                 <div id="carousel2" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -269,7 +269,8 @@
             
             <section class="mb-5">
                 <h2 class="mb-3">Em breve no cátalogo</h2>
-                <div id="carousel5" class="carousel slide"> <div class="carousel-inner">
+                <div id="carousel5" class="carousel slide">
+                    <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
                                 <div class="col"><img src="images/relatorio.png" class="card-img-top" alt="RELATÓRIO DE ATIVIDADES"></div>
@@ -284,7 +285,8 @@
         
             <section class="mb-5">
                 <h2 class="mb-3">Expiram em breve</h2>
-                <div id="carousel6" class="carousel slide"> <div class="carousel-inner">
+                <div id="carousel6" class="carousel slide">
+                    <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-3">
                                 <div class="col"><img src="images/2026-1.png" class="card-img-top" alt="Módulo 2026/1"></div>
@@ -306,36 +308,48 @@
             </div>
         </div>
         
-        <audio id="tudum-sound" src="audio/tudum.mp3" preload="auto"></audio>
-        
-        <script>
-            // Seu script de preloader existente
-            document.addEventListener('DOMContentLoaded', function() {
-                const profileScreen = document.getElementById('profile-screen');
-                const preloader = document.getElementById('preloader');
-                const mainContent = document.getElementById('main-content');
-                const edtechersProfile = document.getElementById('profile-edtechers');
-                const tudumSound = document.getElementById('tudum-sound');
-                if (edtechersProfile) {
-                    edtechersProfile.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        profileScreen.style.display = 'none';
-                        preloader.classList.add('visible');
-                        if (tudumSound) {
-                            tudumSound.play().catch(error => console.log("Autoplay do áudio foi bloqueado."));
-                        }
+    </div>
+    
+    <audio id="tudum-sound" src="audio/tudum.mp3" preload="auto"></audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lógica do Preloader
+            const profileScreen = document.getElementById('profile-screen');
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('main-content');
+            const edtechersProfile = document.getElementById('profile-edtechers');
+            const tudumSound = document.getElementById('tudum-sound');
+            if (edtechersProfile) {
+                edtechersProfile.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    profileScreen.style.display = 'none';
+                    preloader.classList.add('visible');
+                    if (tudumSound) {
+                        tudumSound.play().catch(error => console.log("Autoplay do áudio foi bloqueado."));
+                    }
+                    setTimeout(function() {
+                        preloader.classList.add('hidden');
+                        mainContent.style.display = 'block';
                         setTimeout(function() {
-                            preloader.classList.add('hidden');
-                            mainContent.style.display = 'block';
-                            setTimeout(function() {
-                                preloader.style.display = 'none';
-                            }, 700);
-                        }, 2200);
-                    });
-                }
-            });
-        </script>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+                            preloader.style.display = 'none';
+                        }, 700);
+                    }, 2200);
+                });
+            }
+
+            // Lógica do Menu Hambúrguer
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const sideMenu = document.getElementById('side-menu');
+
+            if (hamburgerBtn && sideMenu) {
+                hamburgerBtn.addEventListener('click', function() {
+                    sideMenu.classList.toggle('is-open');
+                });
+            }
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
