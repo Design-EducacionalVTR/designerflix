@@ -13,33 +13,54 @@
         #profile-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; text-align: center; }
         #preloader, #main-content { display: none; }
 
-       /* 1. Paleta de Cores e Fundo */
-body.bg-dark {
-    background-color: #210047 !important; /* Cor de fallback */
-    background-image: url('images/fundo-confraternizacao.png'); /* Sua imagem de fundo */
-    background-size: cover;          /* Cobre a tela */
-    background-attachment: fixed;      /* Fica fixa */
-    background-position: center center; /* Centraliza */
-    background-repeat: no-repeat;     /* Não repete */
-    position: relative; /* Mantém como referência */
-    /* REMOVEMOS o z-index daqui */
+/* NOVO CSS PARA O FUNDO FIXO */
+
+/* Garante que o body não tenha margens/padding que atrapalhem */
+body {
+    margin: 0;
+    padding: 0;
+    /* A cor de fundo roxa escura pode ficar aqui como fallback */
+    background-color: #210047; 
 }
-/* Overlay semi-transparente SOBRE o fundo, mas ATRÁS do conteúdo */
-body.bg-dark::before {
-    content: ''; 
-    position: fixed; /* FIXO na tela, cobre tudo */
+
+/* O container do fundo */
+#background-container {
+    position: fixed; /* Fica fixo na tela */
     top: 0;
     left: 0;
     width: 100vw; /* Largura total da viewport */
     height: 100vh; /* Altura total da viewport */
-    background-color: rgba(33, 0, 71, 0.75); /* Roxo #210047 com 75% opacidade */
-    z-index: -1; /* Joga para TRÁS de todo o conteúdo */
+    z-index: -1; /* Joga para trás de TODO o conteúdo */
+
+    /* Aplica a imagem de fundo aqui */
+    background-image: url('images/fundo-confraternizacao.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
-        /* Garante que o conteúdo principal fique acima do overlay */
-#main-content, header, #side-menu {
-    position: relative;
-    z-index: 2; 
+
+/* O overlay aplicado ao container do fundo */
+#background-container::before {
+    content: '';
+    position: absolute; /* Relativo ao #background-container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 0, 71, 0.75); /* Roxo com 75% opacidade */
+    /* Não precisa de z-index aqui, pois já está dentro do container com z-index -1 */
 }
+
+/* Garante que o conteúdo principal fique visível (mantém position relative) */
+#profile-screen, #preloader, #main-content, #side-menu {
+    position: relative; 
+    /* z-index não é mais estritamente necessário aqui, 
+       mas pode manter se quiser garantir */
+    /* z-index: 2; */ 
+}
+
+/* Removemos a regra de z-index específica do header que causava problemas */
+/* Apague ou comente a regra anterior para #main-content, header, #side-menu */
         .main-logo-text { color: #ffc629; }
         h2 { color: #FFFFFF; }
 
@@ -127,7 +148,7 @@ body.bg-dark::before {
     </style>
 </head>
 <body class="bg-dark text-white">
-
+<div id="background-container"></div>
     <div id="side-menu" class="side-menu">
         <ul>
             <li><h3>Adicionados recentemente</h3></li>
@@ -383,6 +404,7 @@ body.bg-dark::before {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 
 
