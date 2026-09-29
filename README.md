@@ -34,7 +34,7 @@ O projeto foi construído com foco em leveza, responsividade e fácil manutenç�
 Criado e desenvolvido por **Leonardo Augusto Araujo Pereira**  
 *Designer Educacional*
 
-www.linkedin.com/in/leo-augusto
+www.linkedin.com/in/leo-augusto |
 leonardo.araujo@vitru.com.br
 
 ---
