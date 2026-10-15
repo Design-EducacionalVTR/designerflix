@@ -12,7 +12,24 @@
         /* CSS para controle das telas principais */
         #profile-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; text-align: center; }
         #preloader, #main-content { display: none; }
+        
+        /* CSS do Easter Egg */
+    .easter-egg {
+        font-size: 7px;                 
+        color: #210047;                 
+        margin-right: 4px;              
+        cursor: default;                
+        user-select: text;              
+        display: inline-block;
+        vertical-align: middle;
+        transition: background 0.3s;
+    }
 
+    .easter-egg::selection {
+        background: #FFC107 !important; 
+        color: #210047 !important;      
+    }
+        
 body.bg-dark {
     background-color: #210047 !important; 
 }
