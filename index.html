@@ -121,6 +121,21 @@ body.bg-dark {
 </head>
 <body class="bg-dark text-white">
 
+<header class="container my-4 d-flex justify-content-between align-items-center">
+    
+    <h1 class="main-logo-text mb-0">
+        <span class="easter-egg">By Léo </span>Designerflix <img src="images/icon-logo.png" alt="Ícone" class="logo-icon">
+    </h1>
+
+    <!-- PASSO 1: Cole esta div com os botões de acessibilidade aqui -->
+    <div class="d-flex align-items-center gap-2">
+        <button onclick="toggleContraste()" class="btn btn-sm btn-outline-warning" title="Alto Contraste">👁️ Contraste</button>
+        <button onclick="aumentarFonte()" class="btn btn-sm btn-outline-light" title="Aumentar Fonte">A+</button>
+        <button onclick="diminuirFonte()" class="btn btn-sm btn-outline-light" title="Diminuir Fonte">A-</button>
+    </div>
+
+</header>
+    
     <div id="side-menu" class="side-menu">
         <ul>
             <li><h3>Adicionados recentemente</h3></li>
