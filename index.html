@@ -420,6 +420,30 @@ body.bg-dark {
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+    // Alternar Alto Contraste
+    function toggleContraste() {
+        document.body.classList.toggle('alto-contraste');
+    }
+
+    // Controle de Tamanho de Fonte
+    let tamanhoAtual = 100; // Começa no tamanho padrão de 100%
+    
+    function aumentarFonte() {
+        if(tamanhoAtual < 140) { // Limite máximo de crescimento (evita quebrar layout)
+            tamanhoAtual += 10;
+            document.body.style.fontSize = tamanhoAtual + '%';
+        }
+    }
+
+    function diminuirFonte() {
+        if(tamanhoAtual > 90) { // Limite mínimo para não ficar ilegível
+            tamanhoAtual -= 10;
+            document.body.style.fontSize = tamanhoAtual + '%';
+        }
+    }
+</script>
+
     <!-- Início do widget VLibras -->
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
