@@ -133,3 +133,26 @@ section.row:hover .arrow {
 .news-ticker-container:hover .news-ticker p {
     animation-play-state: paused;
 }
+/* --- ACESSIBILIDADE: ALTO CONTRASTE --- */
+
+/* Adiciona uma transição suave para a tela não piscar bruscamente ao mudar de cor */
+body {
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+/* Regras ativadas pelo botão de contraste */
+body.alto-contraste {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+body.alto-contraste h1, 
+body.alto-contraste h2, 
+body.alto-contraste .poster-title {
+    color: #FFFF00 !important; 
+}
+
+/* Adiciona uma borda amarela nos pôsteres para destacá-los no fundo preto */
+body.alto-contraste .poster {
+    border: 2px solid #FFFF00 !important;
+}
