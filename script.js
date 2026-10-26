@@ -35,3 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+// --- ACESSIBILIDADE ---
+
+// Alternar Alto Contraste
+function toggleContraste() {
+    document.body.classList.toggle('alto-contraste');
+    // Força o contraste no main-content caso ele tenha fundo próprio
+    document.getElementById('main-content').classList.toggle('alto-contraste'); 
+}
+
+// Controle de Tamanho de Fonte (Atualizado para funcionar com Bootstrap)
+let tamanhoAtual = 100;
+
+function aumentarFonte() {
+    if(tamanhoAtual < 140) {
+        tamanhoAtual += 10;
+        // Agora muda no documentElement (tag HTML) em vez do body
+        document.documentElement.style.fontSize = tamanhoAtual + '%'; 
+    }
+}
+
+function diminuirFonte() {
+    if(tamanhoAtual > 90) {
+        tamanhoAtual -= 10;
+        document.documentElement.style.fontSize = tamanhoAtual + '%';
+    }
+}
